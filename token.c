@@ -48,13 +48,13 @@ void assign_symbol(Token *T){
 		strcpy(T->symbol,"W"); 
 	}
 	else if(strcmp(String(*T),"if") == 0){ 
-		strcpy(T->symbol,"I"); 
+		strcpy(T->symbol,"J"); 
 	}
 	else if(strcmp(String(*T),"then") == 0){ 
-		strcpy(T->symbol,"T"); 
+		strcpy(T->symbol,"M"); 
 	}
 	else if(strcmp(String(*T),"else") == 0){ 
-		strcpy(T->symbol,"E"); 
+		strcpy(T->symbol,"S"); 
 	}
 	else if(strcmp(String(*T),"repeat") == 0){ 
 		strcpy(T->symbol,"R"); 
@@ -75,7 +75,7 @@ void assign_symbol(Token *T){
 		strcpy(T->symbol,"DT"); 
 	}
 	else if(strcmp(String(*T),"step") == 0){ 
-		strcpy(T->symbol,"S"); 
+		strcpy(T->symbol,"ST"); 
 	}
 	else if(strcmp(String(*T),"and") == 0){ 
 		strcpy(T->symbol,"AN"); 
