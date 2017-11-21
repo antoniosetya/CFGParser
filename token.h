@@ -6,7 +6,7 @@
 #define TOKEN_H
 
 typedef struct {
-	char symbol[3]; 
+	char symbol[3];
 	char string[20];
 	int line;
 } Token;
@@ -14,7 +14,6 @@ typedef struct {
 #define Symbol(P) (P).symbol
 #define String(P) (P).string
 #define Line(P) (P).line
-
 
 void assign_symbol(Token *T);
 /*I.S. Token sembarang yang dikenali stringnya */
