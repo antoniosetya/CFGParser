@@ -1,0 +1,8 @@
+Program test;
+
+Var
+	X : integer;
+
+begin
+	input(X);
+end.

@@ -11,7 +11,7 @@ void assign_symbol(Token *T){
 	else if(strcmp(String(*T),"..") == 0){
 		strcpy(T->symbol,"DP");
 	}
-	else if(strcmp(String(*T),"int") == 0){
+	else if(strcmp(String(*T),"integer") == 0){
 		strcpy(T->symbol,"INT");
 	}
 	else if(strcmp(String(*T),"char") == 0){
@@ -35,10 +35,10 @@ void assign_symbol(Token *T){
 	else if(strcmp(String(*T),":=") == 0){
 		strcpy(T->symbol,"A");
 	}
-	else if(strcmp(String(*T),"Input") == 0){
+	else if(strcmp(String(*T),"input") == 0){
 		strcpy(T->symbol,"I");
 	}
-	else if(strcmp(String(*T),"Output") == 0){
+	else if(strcmp(String(*T),"output") == 0){
 		strcpy(T->symbol,"O");
 	}
 	else if(strcmp(String(*T),"do") == 0){
@@ -90,7 +90,7 @@ void assign_symbol(Token *T){
 		strcpy(T->symbol,"IDV");
 	}
 	else if(strcmp(String(*T),"mod") == 0) {
-		strcpy(T->symbol,"MD")
+		strcpy(T->symbol,"MD");
 	}
 	else if(strlen(String(*T)) == 1 ){
 		c = String(*T)[0];
@@ -101,7 +101,7 @@ void assign_symbol(Token *T){
 			strcpy(T->symbol,"SB");
 		}
 		else if (c == '*') {
-			strcpy(T->symbol,"MP")
+			strcpy(T->symbol,"MP");
 		}
 		else if (c =='/' ) {
 			strcpy(T->symbol,"DV");

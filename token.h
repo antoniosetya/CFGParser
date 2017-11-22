@@ -6,8 +6,8 @@
 #define TOKEN_H
 
 typedef struct {
-	char symbol[3];
-	char string[20];
+	char symbol[4];
+	char string[64];
 	int line;
 } Token;
 
@@ -19,4 +19,5 @@ void assign_symbol(Token *T);
 /*I.S. Token sembarang yang dikenali stringnya */
 /*F.S. Symbol token akan diassign sesuai string token tersebut*/
 
+#include "token.c"
 #endif
