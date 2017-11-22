@@ -63,7 +63,7 @@ void assign_symbol(Token *T){
 		strcpy(T->symbol,"U");
 	}
 	else if(strcmp("<=",String(*T)) == 0 || strcmp("=",String(*T)) == 0 || strcmp("<",String(*T)) == 0 || strcmp(">=",String(*T)) == 0 || strcmp(">",String(*T)) == 0 || strcmp("<>",String(*T)) == 0){
-		strcpy(T->symbol,"C");
+		strcpy(T->symbol,"CMP");
 	}
 	else if(strcmp(String(*T),"for") == 0){
 		strcpy(T->symbol,"F");
