@@ -4,7 +4,7 @@
 #include "token.h"
 #include "boolean.h"
 
-Token input[256]; // Input (tokenized) are stored here
+Token *input; // Input (tokenized) are stored here
 
 int main() {
 	FILE *fp;
@@ -14,6 +14,7 @@ int main() {
 	tempword[0] = '\0';
 	fp = fopen("test.txt", "r");
 	int N = 1;
+	input = (Token *) malloc (sizeof(Token));
 	int i = 0;
 	ch = fgetc(fp);
 	while(ch != EOF) {
@@ -34,6 +35,7 @@ int main() {
 		if (strlen(tempword) != 0) {
 			strcpy(String(input[N-1]),tempword);
 			N++;
+			input = (Token *) realloc (input,(N * sizeof(Token)));
 		}
 		if ((ch != ' ') && (ch != '\n') && (ch != '\t')) {
 			ch2 = fgetc(fp);
@@ -64,6 +66,7 @@ int main() {
 				ch = ch2;
 			}
 			N++;
+			input = (Token *) realloc (input,(N * sizeof(Token)));
 		}
 		i = 0;
 		if ((ch != EOF) && (ch2 == '\0')) {
