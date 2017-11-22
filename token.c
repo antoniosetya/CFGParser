@@ -133,6 +133,9 @@ void assign_symbol(Token *T){
 		else if( c==')'){
 			strcpy(T->symbol,"CP");
 		}
+		else {
+			strcpy(T->symbol,"Z");
+		}
 	} else {
 		strcpy(T->symbol,"Z");
 	}
