@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
+#include "tokenizer.c"
 #define CFG_File "CFG.txt"
 
 typedef struct {
@@ -15,6 +15,7 @@ production *CFG_Prod; // Productions are stored here
 int NProd;
 Token *input; // Input (tokenized) are stored here
 char ***table;
+int N;
 
 void TraverseTable(char *in, char *out) {
   /* Search if *in is on one of CFG_Prod.end
@@ -23,7 +24,8 @@ void TraverseTable(char *in, char *out) {
      If not found, *out = "" */
   int i;
   boolean IsFirst = true;
-  for (i = 0;i <= NProd; i++) {
+  out[0] = '\0';
+  for (i = 0;i < NProd; i++) {
     if (strcmp(CFG_Prod[i].end,in) == 0) {
       if (!IsFirst) {
         strcat(out," | ");
@@ -40,35 +42,51 @@ void SplitandTraverse(char *sub1, char *sub2, char *out) {
   /* Splits, remake, and traverse CFG_Prod of any non-terminal combinations found on *sub1 and *sub2
      Puts the result in *out */
   char delim[3] = " | ";
+  char temp1[256];
+  strcpy(temp1,sub1);
   char **str1 = (char **) malloc (sizeof(char *));
   int i = 1;
-  str1[i] = (char *) malloc (256 * sizeof(char));
   char *token;
-  token = strtok(sub1,delim);
+  token = strtok(temp1,delim);
   while (token != NULL) {
-    str1 = (char **) realloc(str1,i+1);
+    str1 = (char **) realloc(str1,(i+2) * sizeof(char *));
     str1[i] = (char *) malloc (256 * sizeof(char));
     strcpy(str1[i],token);
     token = strtok(NULL,delim);
     i++;
   }
-  int Neff1 = i--;
+  int Neff1 = i - 1;
+  /* for (i = 1;i <= Neff1;i++) {
+    printf("%s\n",str1[i]);
+  } */
+  char temp2[256];
+  strcpy(temp2,sub2);
   char **str2 = (char **) malloc (sizeof(char *));
   i = 1;
-  token = strtok(sub2,delim);
+  token = strtok(temp2,delim);
   while (token != NULL) {
-    str2 = (char **) realloc(str1,i+1);
+    str2 = (char **) realloc(str2,(i+2) * sizeof(char *));
     str2[i] = (char *) malloc (256 * sizeof(char));
     strcpy(str2[i],token);
     token = strtok(NULL,delim);
     i++;
   }
-  int Neff2 = i--;
+  int Neff2 = i - 1;
+  /* for (i = 1;i <= Neff2; i++) {
+    printf("%s\n",str2[i]);
+  } */
   int j;
-  char temp[512];
-  for (i = 0;i <= Neff1;i++) {
-    for (j = 0;j <= Neff2;j++) {
-
+  char temp[256];
+  char tempout[256];
+  temp[0] = '\0';
+  tempout[0] = '\0';
+  out[0] = '\0';
+  for (i = 1;i <= Neff1;i++) {
+    for (j = 1;j <= Neff2;j++) {
+      strcat(temp,str1[i]);
+      strcat(temp,str2[j]);
+      TraverseTable(temp,tempout);
+      strcat(out,tempout);
     }
   }
 }
@@ -131,28 +149,55 @@ void LoadCFG() {
 
 int main() {
   LoadCFG();
-  /* printf("Input the file to be evaluated : ");scanf("%s",temp);
-  FILE *InFile = fopen(temp,"r");
+  char fname[128], temp;
+  int i = 0;
+  printf("Input filename to be tested (max. 127 characters) : ");
+  temp = getchar();
+  while ((temp != '\n') && (i < 127)) {
+    fname[i] = temp;
+    i++;
+    temp = getchar();
+  }
+  fname[i] = '\0';
+  LoadTestFile(fname);
+  printf("Detected %d terminals.\n",N);
   // Initialize parser table
-  table = (char ***) malloc (N * sizeof(char *));
+  printf("Building empty table...\n");
+  table = (char ***) malloc ((N+1) * sizeof(char **));
   int j;
   for (i = 1;i <= N;i++) {
-    table[i] = (char **) malloc (i * sizeof(char));
+    table[i] = (char **) malloc ((i+1) * sizeof(char *));
     for (j = 1;j <= i;j++) {
       table[i][j] = (char *) malloc (256 * sizeof(char));
     }
   }
 
   for (i = 1;i <= N;i++) {
-    TraverseTable(input[i],table[N][i]);
+    TraverseTable(Symbol(input[i]),table[N][i]);
+  }
+  for (i = 1;i <= N;i++) {
+    printf("%d. %s\n",i,table[N][i]);
   }
 
+  int d, k;
   for (i = N-1;i >= 1;i--) {
     for (j = 1;j <= i;j++) {
-
+      d = 1;
+      table[i][j][0] = '\0';
+      for (k = 1;k <= (N-i);k++) {
+        char temp[256];
+        SplitandTraverse(table[N-k+1][j],table[i+k][j+d],temp);
+        strcat(table[i][j],temp);
+        d++;
+      }
     }
   }
-  */
+  for (i = 1;i <= N;i++) {
+    for (j = 1;j <= i;j++) {
+      printf(" %s ",table[i][j]);
+    }
+    printf("\n");
+  }
 
   // fclose(InFile);
   free(CFG_Prod);

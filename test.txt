@@ -1,17 +1,5 @@
 Program test;
 
-Var
-	X,Z : integer;
-	Y : char;
-
 begin
-	X := 5;
-	Y := "hue";
-	X := X + Y;
-	if (X >= Y) then
-	begin
-		Y := Y + 1;
-		Z := X;
-	end;
-	output(Z);
+	input(X);
 end.
