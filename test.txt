@@ -1,5 +1,11 @@
 Program test;
 
+Var
+	x, i, sum : integer;
+	Y : char;
+
 begin
 	input(X);
+	sum := 0;
+	output(sum);
 end.

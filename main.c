@@ -78,14 +78,21 @@ void SplitandTraverse(char *sub1, char *sub2, char *out) {
   int j;
   char temp[256];
   char tempout[256];
-  temp[0] = '\0';
-  tempout[0] = '\0';
   out[0] = '\0';
+  boolean isFirst = true;
   for (i = 1;i <= Neff1;i++) {
     for (j = 1;j <= Neff2;j++) {
+      temp[0] = '\0';
+      tempout[0] = '\0';
       strcat(temp,str1[i]);
       strcat(temp,str2[j]);
       TraverseTable(temp,tempout);
+      if (!isFirst && (strlen(tempout) != 0)) {
+        strcat(out," | ");
+      }
+      if (strlen(tempout) != 0) {
+        isFirst = false;
+      }
       strcat(out,tempout);
     }
   }
@@ -175,23 +182,25 @@ int main() {
   for (i = 1;i <= N;i++) {
     TraverseTable(Symbol(input[i]),table[N][i]);
   }
-  for (i = 1;i <= N;i++) {
+  /* for (i = 1;i <= N;i++) {
     printf("%d. %s\n",i,table[N][i]);
-  }
+  } */
 
+  char wordtemp[256];
   int d, k;
   for (i = N-1;i >= 1;i--) {
     for (j = 1;j <= i;j++) {
       d = 1;
       table[i][j][0] = '\0';
       for (k = 1;k <= (N-i);k++) {
-        char temp[256];
-        SplitandTraverse(table[N-k+1][j],table[i+k][j+d],temp);
-        strcat(table[i][j],temp);
+        wordtemp[0] = '\0';
+        SplitandTraverse(table[N-k+1][j],table[i+k][j+d],wordtemp);
+        strcat(table[i][j],wordtemp);
         d++;
       }
     }
   }
+
   for (i = 1;i <= N;i++) {
     for (j = 1;j <= i;j++) {
       printf(" %s ",table[i][j]);
@@ -199,7 +208,6 @@ int main() {
     printf("\n");
   }
 
-  // fclose(InFile);
   free(CFG_Prod);
   return 0;
 }
