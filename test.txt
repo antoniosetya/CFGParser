@@ -1,20 +1,28 @@
 Program test;
 
 Var
-	X : integer;
+	X, Y, sum : integer;
 
 begin
-	X := X + 5;
-	if (X >= 5 and X <= 8) then
+	input(X);
+	sum := 0;
+	for Y := X downto 1 do
 	begin
-		input(X);
-	end
-	else if (X = 6) then
-	begin
-		X := X + 1;
-	end
-	else
-	begin
-		output(X);
+		sum := sum + Y;
 	end;
+	output(sum);
+	sum := 0;
+	Y := X;
+	while (Y >= 1) do
+	begin
+		sum := sum + Y;
+		Y := Y - 1;
+	end;
+	output(sum);
+	sum := 0;
+	repeat
+		sum := sum + X;
+		X := X - 1;
+	until (X < 1);
+	output(sum);
 end.
