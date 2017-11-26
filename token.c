@@ -20,6 +20,9 @@ void assign_symbol(Token *T){
 	else if(strcmp(String(*T),"array") == 0){
 		strcpy(T->symbol,"AR");
 	}
+	else if(strcmp(String(*T),"of") == 0){
+		strcpy(T->symbol,"OF");
+	}
 	else if(strcmp(String(*T),"real") == 0){
 		strcpy(T->symbol,"RE");
 	}

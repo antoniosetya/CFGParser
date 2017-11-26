@@ -1,11 +1,20 @@
 Program test;
 
 Var
-	x, i, sum : integer;
-	Y : char;
+	X : integer;
 
 begin
-	input(X);
-	sum := 0;
-	output(sum);
+	X := X + 5;
+	if (X >= 5 and X <= 8) then
+	begin
+		input(X);
+	end
+	else if (X = 6) then
+	begin
+		X := X + 1;
+	end
+	else
+	begin
+		output(X);
+	end;
 end.

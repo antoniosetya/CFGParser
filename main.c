@@ -25,7 +25,7 @@ void TraverseTable(char *in, char *out) {
   int i;
   boolean IsFirst = true;
   out[0] = '\0';
-  for (i = 0;i < NProd; i++) {
+  for (i = 0;i <= NProd; i++) {
     if (strcmp(CFG_Prod[i].end,in) == 0) {
       if (!IsFirst) {
         strcat(out," | ");
@@ -156,8 +156,13 @@ void LoadCFG() {
 
 int main() {
   LoadCFG();
-  char fname[128], temp;
   int i = 0;
+  /* FILE *CFGDump = fopen("cfg_dump.txt","w");
+  for (i = 0;i <= NProd;i++) {
+    fprintf(CFGDump,"%s -> %s\n",CFG_Prod[i].start,CFG_Prod[i].end);
+  }
+  fclose(CFGDump); */
+  char fname[128], temp;
   printf("Input filename to be tested (max. 127 characters) : ");
   temp = getchar();
   while ((temp != '\n') && (i < 127)) {
@@ -168,6 +173,12 @@ int main() {
   fname[i] = '\0';
   LoadTestFile(fname);
   printf("Detected %d terminals.\n",N);
+
+  for (i = 1; i <= N;i++) {
+    printf("%s ",Symbol(input[i]));
+  }
+  printf("\n");
+
   // Initialize parser table
   printf("Building empty table...\n");
   table = (char ***) malloc ((N+1) * sizeof(char **));
@@ -201,13 +212,16 @@ int main() {
     }
   }
 
+  printf("%s\n",table[1][1]);
+  FILE *debug = fopen("debugout.csv","w");
   for (i = 1;i <= N;i++) {
-    for (j = 1;j <= i;j++) {
-      printf(" %s ",table[i][j]);
+    fprintf(debug,"%s",table[i][1]);
+    for (j = 2;j <= i;j++) {
+      fprintf(debug,",%s",table[i][j]);
     }
-    printf("\n");
+    fprintf(debug,"\n");
   }
-
+  fclose(debug);
   free(CFG_Prod);
   return 0;
 }
