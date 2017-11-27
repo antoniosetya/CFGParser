@@ -3,28 +3,30 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <time.h>
+#include <time.h> // Used only to measure time taken to parse
 #include "tokenizer.c"
 #define CFG_File "CFG.txt"
 
 typedef struct {
   char start[50];
   char end[256];
-} production;
+} production; // Data struct for CNF productions
 
 typedef struct tTableNode *address;
 typedef struct tTableNode {
   char Tab[256];
   address parent;
-} TableNode;
+} TableNode; // Data struct for the parser table
 
-production *CFG_Prod; // Productions are stored here
-int NProd;
+production *CFG_Prod; // Productions (in CNF) are stored here
+int NProd; // Number of productions stored
 Token *input; // Input (tokenized) are stored here
-TableNode **table;
-int N;
+TableNode **table; // Parser table storage
+int N; // Number of terminals detected
 
 void UnDuplicate(char *in) {
+  /* Removes duplicate string in *in
+     String *in is in format : <str1> | <str2> | ... | <str-n> */
   char temp[256];
   int i;
   strcpy(temp,in);
@@ -85,10 +87,14 @@ void TraverseTable(char *in, char *out) {
 
 void SplitandTraverse(char *sub1, char *sub2, char *out) {
   /* Splits, remake, and traverse CFG_Prod of any non-terminal combinations found on *sub1 and *sub2
+     *sub1 and *sub2 both have string in this format : <str1> | <str2> | ... | <str-n>
      Puts the result in *out */
+  // Stores delimiter
   char delim[4];
   strcpy(delim," | ");
-  char temp1[256];
+
+  // Splits the first string
+  char temp1[256]; // Temporary container of the string. This is needed because strtok will alter the original string
   strcpy(temp1,sub1);
   char **str1 = (char **) malloc (sizeof(char *));
   int i = 1;
@@ -101,11 +107,10 @@ void SplitandTraverse(char *sub1, char *sub2, char *out) {
     token = strtok(NULL,delim);
     i++;
   }
-  int Neff1 = i - 1;
-  /* for (i = 1;i <= Neff1;i++) {
-    printf("%s\n",str1[i]);
-  } */
-  char temp2[256];
+  int Neff1 = i - 1; // Sets the number of substring extracted
+
+  // Splits the second string
+  char temp2[256]; // Temporary container of the string. This is needed because strtok will alter the original string
   strcpy(temp2,sub2);
   char **str2 = (char **) malloc (sizeof(char *));
   i = 1;
@@ -118,9 +123,9 @@ void SplitandTraverse(char *sub1, char *sub2, char *out) {
     i++;
   }
   int Neff2 = i - 1;
-  /* for (i = 1;i <= Neff2; i++) {
-    printf("%s\n",str2[i]);
-  } */
+
+  // Make any possible combinations from each substrings, and search
+  // the production table. (using TraverseTable)
   int j;
   char temp[256];
   char tempout[256];
@@ -145,7 +150,7 @@ void SplitandTraverse(char *sub1, char *sub2, char *out) {
 }
 
 void LoadCFG() {
-// Loads the CFG file
+// Loads the CFG (in CNF) file into CFG_Prod
   CFG_Prod = (production *) malloc (sizeof(production));
   printf("Reading grammar file... ");
   FILE *GFile = fopen(CFG_File,"r");
@@ -201,17 +206,13 @@ void LoadCFG() {
 }
 
 int main() {
-  LoadCFG();
+  LoadCFG(); // Loads the file that contain the CFG
   int i = 0;
   int j, k, d;
   clock_t start, end;
   double time_used;
-  /* FILE *CFGDump = fopen("cfg_dump.txt","w");
-  for (i = 0;i <= NProd;i++) {
-    fprintf(CFGDump,"%s -> %s\n",CFG_Prod[i].start,CFG_Prod[i].end);
-  }
-  fclose(CFGDump); */
   char fname[128], temp;
+  // Asks the file to be evaluated
   printf("Input filename to be tested (max. 127 characters) : ");
   temp = getchar();
   while ((temp != '\n') && (i < 127)) {
@@ -220,77 +221,88 @@ int main() {
     temp = getchar();
   }
   fname[i] = '\0';
-  LoadTestFile(fname);
-  printf("Detected %d terminals.\n",N);
-
-  /* for (i = 1; i <= N;i++) {
-    printf("%s ",Symbol(input[i]));
-    printf("%d ",Line(input[i]));
-  }
-  printf("\n"); */
-
-  // Initialize parser table
-  printf("Building empty table...\n");
-  table = (TableNode **) malloc ((N+1) * sizeof(TableNode *));
-  for (i = 1;i <= N;i++) {
-    table[i] = (TableNode *) malloc ((i+1) * sizeof(TableNode));
-  }
-
-  printf("Parsing...\n");
-  start = clock();
-  for (i = 1;i <= N;i++) {
-    TraverseTable(Symbol(input[i]),table[N][i].Tab);
-  }
-  /* for (i = 1;i <= N;i++) {
-    printf("%d. %s\n",i,table[N][i]);
-  } */
-
-  char wordtemp[256];
-  for (i = N-1;i >= 1;i--) {
-    for (j = 1;j <= i;j++) {
-      d = 1;
-      table[i][j].Tab[0] = '\0';
-      for (k = 1;k <= (N-i);k++) {
-        wordtemp[0] = '\0';
-        SplitandTraverse(table[N-k+1][j].Tab,table[i+k][j+d].Tab,wordtemp);
-        strcat(table[i][j].Tab,wordtemp);
-        if (wordtemp[0] != '\0') {
-          table[N-k+1][j].parent = &table[i][j];
-          table[i+k][j+d].parent = &table[i][j];
-        }
-        d++;
-      }
-      UnDuplicate(table[i][j].Tab);
-    }
-  }
-  end = clock();
-  time_used = ((double)(end - start))/CLOCKS_PER_SEC;
-  printf("It took %f second(s)\n",time_used);
-  if (strcmp(table[1][1].Tab,"<START>") == 0) {
-    printf("Program accepted!\n");
+  if(!LoadTestFile(fname)) { // Trying to load given file
+    printf("File not found!\n");
   }
   else {
-    printf("Program rejected!\n");
-    boolean found = false;
-    for (i = N;(i >= 1) && !found;i--) {
-      if (table[N][i].parent == NULL) {
-        printf("(%d,%d)\n",N,i);
-        printf("Syntax error detected in line %d.\n",Line(input[i]));
-        found = true;
+    printf("Detected %d terminals.\n",N);
+
+    // Initialize parser table
+    printf("Building empty table...\n");
+    table = (TableNode **) malloc ((N+1) * sizeof(TableNode *));
+    for (i = 1;i <= N;i++) {
+      table[i] = (TableNode *) malloc ((i+1) * sizeof(TableNode));
+    }
+
+    // Starts to parse the file
+    printf("Parsing...\n");
+    start = clock();
+    // Fill up the bottom row
+    for (i = 1;i <= N;i++) {
+      TraverseTable(Symbol(input[i]),table[N][i].Tab);
+    }
+
+    // Fill up the next rows, up until the first row
+    char wordtemp[256];
+    boolean isFirst = true;
+    for (i = N-1;i >= 1;i--) {
+      for (j = 1;j <= i;j++) {
+        d = 1;
+        table[i][j].Tab[0] = '\0';
+        for (k = 1;k <= (N-i);k++) {
+          wordtemp[0] = '\0';
+          SplitandTraverse(table[N-k+1][j].Tab,table[i+k][j+d].Tab,wordtemp);
+          if (isFirst && (strlen(wordtemp) != 0)) {
+            strcat(table[i][j].Tab,wordtemp);
+            isFirst = false;
+          }
+          else if (strlen(wordtemp) != 0) {
+            strcat(table[i][j].Tab," | ");
+            strcat(table[i][j].Tab,wordtemp);
+          }
+
+          if (wordtemp[0] != '\0') {
+            table[N-k+1][j].parent = &table[i][j];
+            table[i+k][j+d].parent = &table[i][j];
+          }
+          d++;
+        }
+        UnDuplicate(table[i][j].Tab);
       }
     }
-  }
-  FILE *debug = fopen("debugout.csv","w");
-  for (i = 1;i <= N;i++) {
-    fprintf(debug,"%s",table[i][1].Tab);
-    for (j = 2;j <= i;j++) {
-      fprintf(debug,",%s",table[i][j].Tab);
+    end = clock();
+    time_used = ((double)(end - start))/CLOCKS_PER_SEC;
+    printf("Parse complete in %f second(s)\n",time_used);
+
+    // Checks if the file is accepted/rejected
+    if (strcmp(table[1][1].Tab,"<START>") == 0) {
+      printf("Program accepted!\n");
     }
-    fprintf(debug,"\n");
+    else {
+      printf("Program rejected!\n");
+      // Try to search the problem
+      boolean found = false;
+      for (i = N;(i >= 1) && !found;i--) {
+        if (table[N][i].parent == NULL) {
+          printf("Syntax error detected in line %d.\n",Line(input[i]));
+          found = true;
+        }
+      }
+    }
+
+    // Dumps the parser table into debugout.csv
+    FILE *debug = fopen("debugout.csv","w");
+    for (i = 1;i <= N;i++) {
+      fprintf(debug,"%s",table[i][1].Tab);
+      for (j = 2;j <= i;j++) {
+        fprintf(debug,",%s",table[i][j].Tab);
+      }
+      fprintf(debug,"\n");
+    }
+    printf("Generated parser table at debugout.csv\n");
+    fclose(debug);
+    free(table);
   }
-  printf("Generated parser table debugout.csv\n");
-  fclose(debug);
-  free(table);
   free(CFG_Prod);
   return 0;
 }

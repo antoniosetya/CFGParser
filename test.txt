@@ -1,15 +1,29 @@
 Program test;
 
 Var
-	X : integer;
+	Ini, itu, I , j : integer;
+	Itu : array[1..4] of real;
+	Hue, heu : char;
 
 begin
-	while (X >= 4) do
+	ini := (5 + 1) * 7;
+	if (Ini * 5 > 10) and (itu mod 4 < 100)) then
 	begin
-		if ((X >= 4) and (X <= 8)) then
+		for I := 1 to 5 step 4 do
 		begin
-			output(X);
+			ini := ini * 4;
 		end;
-		X := X - 1;
+		for I := 10 downto 5 do
+		begin
+			Itu := Itu mod 5;
+		end;
+		I := 4;
+		while I <= 4 do
+		begin
+			J := 5;
+			repeat
+				J:= j-1;
+			until j = 0;
+		end;
 	end;
 end.
