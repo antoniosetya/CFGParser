@@ -19,6 +19,7 @@ void LoadTestFile(char *filename) {
 	fp = fopen(filename, "r");
 	input = (Token *) malloc (2 * sizeof(Token));
 	int i = 0;
+	int line = 1;
 	ch = fgetc(fp);
 	while(ch != EOF) {
 		boolean KeepChar = (ch != ';') && (ch != ',') && (ch != '.') && (ch != ':') && (ch != '"');
@@ -37,35 +38,43 @@ void LoadTestFile(char *filename) {
 		tempword[i] = '\0';
 		if (strlen(tempword) != 0) {
 			strcpy(String(input[N]),tempword);
+			Line(input[N]) = line;
 			N++;
 			input = (Token *) realloc (input,((N+2) * sizeof(Token)));
 		}
+		if (ch == '\n') line++;
 		if ((ch != ' ') && (ch != '\n') && (ch != '\t')) {
 			ch2 = fgetc(fp);
 			if ((ch == ':') && (ch2 == '=')) {
 				strcpy(String(input[N]),":=");
+				Line(input[N]) = line;
 				ch2 = '\0';
 			}
 			else if ((ch == '<') && (ch2 == '=')) {
 				strcpy(String(input[N]),"<=");
+				Line(input[N]) = line;
 				ch2 = '\0';
 			}
 			else if ((ch == '<') && (ch2 == '>')) {
 				strcpy(String(input[N]),"<>");
+				Line(input[N]) = line;
 				ch2 = '\0';
 			}
 			else if ((ch == '>') && (ch2 == '=')) {
 				strcpy(String(input[N]),">=");
+				Line(input[N]) = line;
 				ch2 = '\0';
 			}
 			else if ((ch == '.') && (ch2 == '.')) {
 				strcpy(String(input[N]),"..");
+				Line(input[N]) = line;
 				ch2 = '\0';
 			}
 			else {
 				tempword[0] = ch;
 				tempword[1] = '\0';
 				strcpy(String(input[N]),tempword);
+				Line(input[N]) = line;
 				ch = ch2;
 			}
 			N++;

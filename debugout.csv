@@ -1,7 +1,7 @@
-<START> | <START> | <START> | <START> | <START> | <START> | <START> | <START>
+<START>
 ,
 ,,
-,,,<BODY> | <BODY> | <BODY> | <BODY> | <BODY> | <BODY> | <BODY> | <BODY>
+,,,<BODY>
 ,,,,
 ,,,,,
 ,,,,,,
@@ -10,67 +10,36 @@
 ,,,,,,,,,
 ,,,,,,,,,,
 ,,,,,,,,,,,
-,,,,,,,,,,,,<MAIN_BODY> | <MAIN_BODY> | <MAIN_BODY> | <MAIN_BODY> | <MAIN_BODY> | <MAIN_BODY> | <MAIN_BODY> | <MAIN_BODY>
-,,,,,,,,,,,,,<MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM>
+,,,,,,,,,,,,<MAIN_BODY>
+,,,,,,,,,,,,,<MAIN_PROGRAM>
 ,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,<MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM>
+,,,,,,,,,,,,,,,,,<MAIN_PROGRAM>
+,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,<MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM>
+,,,,,,,,,,,,,,,,,,,,,,<MAIN_PROGRAM>
 ,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,<FOR_LOOP>,,
+,,,,,,,,,,,,,,,,,,,,,,,<FOR_HEADER>,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,<FOR_REST>,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,<RIGHT_FOR>,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,<LOOP_REST>,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,<MAIN_BODY_INSIDE> | <MAIN_BODY_LOOP>,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,<MAIN_PROGRAM_INSIDE>,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,<MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM>
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,<MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM>
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,<MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM> | <MAIN_PROGRAM>
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,<WHILE_LOOP> | <WHILE_LOOP> | <WHILE_LOOP> | <WHILE_LOOP>,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,<FOR_LOOP> | <FOR_LOOP>,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,<LOOP_REST> | <LOOP_REST> | <LOOP_REST> | <LOOP_REST>,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,<FOR_HEADER> | <FOR_HEADER>,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,<MAIN_BODY_INSIDE> | <MAIN_BODY_LOOP> | <MAIN_BODY_INSIDE> | <MAIN_BODY_LOOP> | <MAIN_BODY_INSIDE> | <MAIN_BODY_LOOP> | <MAIN_BODY_INSIDE> | <MAIN_BODY_LOOP>,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,<MAIN_PROGRAM_INSIDE> | <MAIN_PROGRAM_INSIDE> | <MAIN_PROGRAM_INSIDE> | <MAIN_PROGRAM_INSIDE>,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,<FOR_REST> | <FOR_REST>,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,<RIGHT_FOR> | <RIGHT_FOR>,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,<LOOP_REST> | <LOOP_REST>,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,<VAR>,,,,,,,,,,,,,,,,,,,,,,,,,,<MAIN_BODY_INSIDE> | <MAIN_BODY_LOOP> | <MAIN_BODY_INSIDE> | <MAIN_BODY_LOOP>,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,<VAR_BODY>,,,,,,,,,,,,,,,,,,,,,,,,,,<MAIN_PROGRAM_INSIDE> | <MAIN_PROGRAM_INSIDE>,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,<MAIN_PROGRAM_INSIDE> | <MAIN_PROGRAM_INSIDE>,,,,,,,
-,,,,,<MORE_VAR>,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,<MAIN_PROGRAM>
-,,,,,,<VAR_BODY>,,,,,,,,,,,,,,,,,,,,,,,,<ASSIGNMENT> | <ASSIGNMENT>,,,,,,,,,,,,,,,,,<WHILE_EXPRESSION>,,,,,,,,<ASSIGNMENT> | <ASSIGNMENT>,,,,,,<ASSIGNMENT> | <ASSIGNMENT>,,,,,,,,,
-,,,,,,,<MORE_VAR>,,,,,,<INPUT_OUTPUT>,,,,,,,,,,,,,,,,,<LEFT_FOR> | <LEFT_FOR>,<REST_ASSIGNMENT> | <REST_ASSIGNMENT>,,,,,,,<INPUT_OUTPUT>,,,,,,,,,,<PARENTHESIS_EXPR> | <PARENTHESIS_EXPR> | <COND_IF_EXPRESSION>,,,,,,,<LEFT_FOR> | <LEFT_FOR>,<REST_ASSIGNMENT> | <REST_ASSIGNMENT>,,,,,<LEFT_FOR> | <LEFT_FOR>,<REST_ASSIGNMENT> | <REST_ASSIGNMENT>,,,,,,,<INPUT_OUTPUT>,,
-,,,,,,,,<VAR_BODY>,,,,,,<PARAM_IN> | <PARAM_OUT>,,,,<ASSIGNMENT>,,,,,,,,,,,,,<R_H_LEFT_FOR> | <R_H_LEFT_FOR>,<RIGHTHAND_ASSIGNMENT> | <RIGHTHAND_ASSIGNMENT>,,,,,,,<PARAM_IN> | <PARAM_OUT>,,,,<ASSIGNMENT>,,,,,,<PAREN_EXPR_REST> | <PAREN_EXPR_REST> | <EXPRESSION_REST> | <PAREN_COND_EXPR_REST>,,,,,,,<R_H_LEFT_FOR> | <R_H_LEFT_FOR>,<RIGHTHAND_ASSIGNMENT> | <RIGHTHAND_ASSIGNMENT>,,,,,<R_H_LEFT_FOR> | <R_H_LEFT_FOR>,<RIGHTHAND_ASSIGNMENT> | <RIGHTHAND_ASSIGNMENT>,,,,,,,<PARAM_IN> | <PARAM_OUT>,,
-<PROG_HEADER>,,,,,,,,,<TYPE_DECL>,,,,,,<PARAM_IN_REST> | <PARAM_OUT_REST>,,,<LEFT_FOR>,<REST_ASSIGNMENT>,,,,<LEFT_FOR>,,,,,,,<LEFT_FOR>,,<LEFT_COND_EXPRESSION> | <EXPRESSION> | <RIGHT_EXPR> | <EXPRESSION> | <RIGHT_EXPR>,,,,,,,,<PARAM_IN_REST> | <PARAM_OUT_REST>,,,<LEFT_FOR>,<REST_ASSIGNMENT>,,,,,<EXPRESSION> | <RIGHT_EXPR> | <EXPRESSION> | <RIGHT_EXPR> | <COND_EXPRESSION>,,,,,,<LEFT_FOR>,,<LEFT_COND_EXPRESSION> | <EXPRESSION> | <RIGHT_EXPR> | <EXPRESSION> | <RIGHT_EXPR>,,,,<LEFT_FOR>,,<LEFT_COND_EXPRESSION> | <EXPRESSION> | <RIGHT_EXPR> | <EXPRESSION> | <RIGHT_EXPR>,,,,,,,,<PARAM_IN_REST> | <PARAM_OUT_REST>,,
-,<PROG_DECL_REST> | <RIGHTHAND_ASSIGNMENT>,,,,,,,,,<VAR_TYPE>,,,,,,<NEXT_IDENTIFIER_IN> | <NEXT_IDENTIFIER_OUT>,,,<R_H_LEFT_FOR>,<PROG_DECL_REST> | <RIGHTHAND_ASSIGNMENT>,,,,<R_H_LEFT_FOR>,,,,,,,<R_H_LEFT_FOR>,,<OPERATION> | <EXPR_REST>,<PROG_DECL_REST> | <RIGHTHAND_ASSIGNMENT>,,<MAIN_PROGRAM_INSIDE>,,,,,<NEXT_IDENTIFIER_IN> | <NEXT_IDENTIFIER_OUT>,,,<R_H_LEFT_FOR>,<PROG_DECL_REST> | <RIGHTHAND_ASSIGNMENT>,,,,,<EXPR_REST> | <RIGHT_COND_EXPRESSION>,,,,,,<R_H_LEFT_FOR>,,<OPERATION> | <EXPR_REST>,<PROG_DECL_REST> | <RIGHTHAND_ASSIGNMENT>,,,<R_H_LEFT_FOR>,,<OPERATION> | <EXPR_REST>,<PROG_DECL_REST> | <RIGHTHAND_ASSIGNMENT>,,<MAIN_PROGRAM_INSIDE>,,,,,<NEXT_IDENTIFIER_IN> | <NEXT_IDENTIFIER_OUT>,,<MAIN_PROGRAM>
-<PROG_DECL>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<SEMICOLON>,<VAR_HEADER>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<COMMA>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<COMMA>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<COLON>,<PRIV_TYPE>,<SEMICOLON>,<BEGIN>,<INPUT>,<OPEN_PARENTHESIS>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<CLOSE_PARENTHESIS>,<SEMICOLON>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<EQUALS_TO>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<SEMICOLON>,<FOR>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<EQUALS_TO>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<INC/DEC>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<DO>,<BEGIN>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<EQUALS_TO>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<MATH_OPERATOR> | <PLUS>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<SEMICOLON>,<END>,<SEMICOLON>,<OUTPUT>,<OPEN_PARENTHESIS>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<CLOSE_PARENTHESIS>,<SEMICOLON>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<EQUALS_TO>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<SEMICOLON>,<WHILE>,<OPEN_PARENTHESIS>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<COND_OPERATOR>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<CLOSE_PARENTHESIS>,<DO>,<BEGIN>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<EQUALS_TO>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<MATH_OPERATOR> | <PLUS>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<SEMICOLON>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<EQUALS_TO>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<MATH_OPERATOR>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<SEMICOLON>,<END>,<SEMICOLON>,<OUTPUT>,<OPEN_PARENTHESIS>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<CLOSE_PARENTHESIS>,<SEMICOLON>,<END>,<PERIOD>
+,,,<VAR>,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,<VAR_BODY>,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,<MORE_VAR>,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,<MAIN_PROGRAM_INSIDE>,,
+,,,,,,<VAR_BODY>,,,,,,,,,,,,,,,,,,,,,,,,<ASSIGNMENT>,,,,,,,,,
+,,,,,,,<MORE_VAR>,,,,,,,,,,<INPUT_OUTPUT>,,,,,,,,,,,,,<LEFT_FOR>,<REST_ASSIGNMENT>,,,,,<INPUT_OUTPUT>,,,,
+,,,,,,,,<VAR_BODY>,,,,,<ASSIGNMENT>,,,,,<PARAM_IN> | <PARAM_OUT>,,,,,,,,,,,,,<R_H_LEFT_FOR>,<RIGHTHAND_ASSIGNMENT>,,,,,<PARAM_IN> | <PARAM_OUT>,,,,
+<PROG_HEADER>,,,,,,,,,<TYPE_DECL>,,,,<LEFT_FOR>,<REST_ASSIGNMENT>,,,,,<PARAM_IN_REST> | <PARAM_OUT_REST>,,,,<LEFT_FOR>,,,,,,,<LEFT_FOR>,,<LEFT_COND_EXPRESSION> | <EXPRESSION> | <RIGHT_EXPR>,,,,,,<PARAM_IN_REST> | <PARAM_OUT_REST>,,,,
+,<PROG_DECL_REST> | <RIGHTHAND_ASSIGNMENT>,,,,,,,,,<VAR_TYPE>,,,,<R_H_LEFT_FOR>,<PROG_DECL_REST> | <RIGHTHAND_ASSIGNMENT>,,,,,<NEXT_IDENTIFIER_IN> | <NEXT_IDENTIFIER_OUT>,,,,<R_H_LEFT_FOR>,,,,,,,<R_H_LEFT_FOR>,,<OPERATION> | <EXPR_REST>,<PROG_DECL_REST> | <RIGHTHAND_ASSIGNMENT>,,,,,<NEXT_IDENTIFIER_IN> | <NEXT_IDENTIFIER_OUT>,,<MAIN_PROGRAM_INSIDE>,,<MAIN_PROGRAM>
+<PROG_DECL>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<SEMICOLON>,<VAR_HEADER>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<COMMA>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<COMMA>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<COLON>,<PRIV_TYPE>,<SEMICOLON>,<BEGIN>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<EQUALS_TO>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<SEMICOLON>,<INPUT>,<OPEN_PARENTHESIS>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<CLOSE_PARENTHESIS>,<SEMICOLON>,<FOR>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<EQUALS_TO>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<INC/DEC>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<DO>,<BEGIN>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<EQUALS_TO>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<MATH_OPERATOR> | <PLUS>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<SEMICOLON>,<OUTPUT>,<OPEN_PARENTHESIS>,<PROG_NAME> | <IDENTIFIER> | <NUM> | <RIGHT_EXPR> | <LEFT_COND_EXPRESSION>,<CLOSE_PARENTHESIS>,<SEMICOLON>,<END>,<SEMICOLON>,<END>,<PERIOD>

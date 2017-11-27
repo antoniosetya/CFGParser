@@ -4,25 +4,11 @@ Var
 	X, Y, sum : integer;
 
 begin
-	input(X);
 	sum := 0;
+	input(X);
 	for Y := X downto 1 do
 	begin
 		sum := sum + Y;
+	output(sum);
 	end;
-	output(sum);
-	sum := 0;
-	Y := X;
-	while (Y >= 1) do
-	begin
-		sum := sum + Y;
-		Y := Y - 1;
-	end;
-	output(sum);
-	sum := 0;
-	repeat
-		sum := sum + X;
-		X := X - 1;
-	until (X < 1);
-	output(sum);
 end.
