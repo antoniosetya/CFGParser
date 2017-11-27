@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 #include "tokenizer.c"
 #define CFG_File "CFG.txt"
 
@@ -203,6 +204,8 @@ int main() {
   LoadCFG();
   int i = 0;
   int j, k, d;
+  clock_t start, end;
+  double time_used;
   /* FILE *CFGDump = fopen("cfg_dump.txt","w");
   for (i = 0;i <= NProd;i++) {
     fprintf(CFGDump,"%s -> %s\n",CFG_Prod[i].start,CFG_Prod[i].end);
@@ -234,6 +237,7 @@ int main() {
   }
 
   printf("Parsing...\n");
+  start = clock();
   for (i = 1;i <= N;i++) {
     TraverseTable(Symbol(input[i]),table[N][i].Tab);
   }
@@ -259,7 +263,9 @@ int main() {
       UnDuplicate(table[i][j].Tab);
     }
   }
-
+  end = clock();
+  time_used = ((double)(end - start))/CLOCKS_PER_SEC;
+  printf("It took %f second(s)\n",time_used);
   if (strcmp(table[1][1].Tab,"<START>") == 0) {
     printf("Program accepted!\n");
   }

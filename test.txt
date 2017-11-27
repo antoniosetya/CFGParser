@@ -1,14 +1,15 @@
 Program test;
 
 Var
-	X, Y, sum : integer;
+	X : integer;
 
 begin
-	sum := 0;
-	input(X);
-	for Y := X downto 1 do
+	while (X >= 4) do
 	begin
-		sum := sum + Y;
-	output(sum);
+		if ((X >= 4) and (X <= 8)) then
+		begin
+			output(X);
+		end;
+		X := X - 1;
 	end;
 end.
