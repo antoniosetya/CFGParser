@@ -14,8 +14,8 @@ typedef struct {
 
 typedef struct tTableNode *address;
 typedef struct tTableNode {
-  char Tab[256];
   address parent;
+  char Tab[256];
 } TableNode; // Data struct for the parser table
 
 production *CFG_Prod; // Productions (in CNF) are stored here
@@ -255,13 +255,12 @@ int main() {
           if (isFirst && (strlen(wordtemp) != 0)) {
             strcat(table[i][j].Tab,wordtemp);
             isFirst = false;
+            table[N-k+1][j].parent = &table[i][j];
+            table[i+k][j+d].parent = &table[i][j];
           }
           else if (strlen(wordtemp) != 0) {
             strcat(table[i][j].Tab," | ");
             strcat(table[i][j].Tab,wordtemp);
-          }
-
-          if (wordtemp[0] != '\0') {
             table[N-k+1][j].parent = &table[i][j];
             table[i+k][j+d].parent = &table[i][j];
           }
@@ -299,7 +298,11 @@ int main() {
       }
       fprintf(debug,"\n");
     }
-    printf("Generated parser table at debugout.csv\n");
+    fprintf(debug,"%s",Symbol(input[1]));
+    for (i = 2;i <= N;i++) {
+      fprintf(debug,",%s",Symbol(input[i]));
+    }
+    printf("Generated parser table stored at debugout.csv\n");
     fclose(debug);
     free(table);
   }

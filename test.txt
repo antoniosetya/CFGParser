@@ -22,8 +22,11 @@ begin
 		begin
 			J := 5;
 			repeat
-				J:= j-1;
+				J := j - 1;
 			until j = 0;
 		end;
 	end;
+	output(ini, itu);
+	output("Ini mah cuma testing");
+	output(J);
 end.
